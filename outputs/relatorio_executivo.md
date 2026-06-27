@@ -1,48 +1,49 @@
-# Relatório Executivo – Predição de Turnover de Funcionários
+# Relatório Executivo
 
-## Objetivo
+## Projeto: Predição de Turnover de Funcionários com Machine Learning
 
-Este projeto teve como objetivo desenvolver um modelo de Machine Learning capaz de prever o risco de desligamento (turnover) de funcionários, identificando os principais fatores associados à saída de colaboradores e fornecendo informações que possam auxiliar o setor de Recursos Humanos na tomada de decisões.
+## Visão Geral
 
----
+Este projeto teve como objetivo desenvolver um modelo de Machine Learning capaz de prever o desligamento de funcionários (turnover), utilizando técnicas de análise exploratória de dados, pré-processamento, modelagem preditiva e explicabilidade.
 
-## Base de Dados
-
-Foi utilizado o conjunto de dados **IBM HR Analytics – Employee Attrition & Performance**, contendo informações de **1.470 funcionários** e **35 variáveis** relacionadas a aspectos demográficos, profissionais, financeiros e de satisfação no trabalho.
+O trabalho foi desenvolvido utilizando Python e bibliotecas amplamente empregadas em projetos de Ciência de Dados, como Pandas, Scikit-Learn, XGBoost e SHAP.
 
 ---
 
-## Metodologia
+# Dataset
 
-O desenvolvimento do projeto foi dividido nas seguintes etapas:
+Foi utilizado o conjunto de dados **IBM HR Analytics – Employee Attrition & Performance**, contendo informações de **1.470 funcionários** e variáveis relacionadas ao perfil profissional, remuneração, satisfação no trabalho e histórico de carreira.
 
-* Análise exploratória dos dados (EDA);
+---
+
+# Etapas do Projeto
+
+O projeto foi dividido nas seguintes fases:
+
+* Carregamento e entendimento dos dados;
+* Análise Exploratória (EDA);
 * Limpeza e preparação da base;
-* Conversão das variáveis categóricas por One-Hot Encoding;
-* Separação dos dados em treino (80%) e teste (20%);
-* Treinamento dos modelos Regressão Logística, Random Forest e XGBoost;
-* Avaliação por meio das métricas Accuracy, Precision, Recall, F1-Score e ROC-AUC;
-* Explicabilidade do modelo utilizando SHAP.
+* Codificação das variáveis categóricas (One-Hot Encoding);
+* Separação dos conjuntos de treino e teste;
+* Treinamento e comparação de modelos de Machine Learning;
+* Explicabilidade utilizando SHAP;
+* Geração de um ranking de risco de turnover.
 
 ---
 
-## Principais Descobertas
+# Modelos Avaliados
 
-A análise exploratória revelou padrões importantes relacionados ao turnover:
+Foram treinados e comparados três algoritmos supervisionados:
 
-* Funcionários que realizam horas extras apresentam maior probabilidade de desligamento.
-* Funcionários solteiros apresentam maior índice de turnover.
-* Cargos da área comercial, especialmente Sales Representative, possuem maior risco de saída.
-* Funcionários mais jovens tendem a apresentar maior rotatividade.
-* Maiores distâncias entre residência e empresa estão associadas ao aumento do risco de desligamento.
+* Regressão Logística
+* Random Forest
+* XGBoost
 
----
+Também foi desenvolvida uma versão balanceada do XGBoost para melhorar a identificação da classe minoritária.
 
-## Resultado dos Modelos
+Após a comparação das métricas, o **XGBoost Balanceado** foi selecionado como modelo final por apresentar o melhor equilíbrio entre precisão e capacidade de identificar funcionários com risco de desligamento.
 
-Foram avaliados três algoritmos de classificação.
-
-O modelo **XGBoost Balanceado** apresentou o melhor equilíbrio entre precisão e capacidade de identificar funcionários com risco de desligamento, alcançando aproximadamente:
+### Resultado do modelo selecionado
 
 * Accuracy: **85,37%**
 * Precision: **57,14%**
@@ -50,41 +51,55 @@ O modelo **XGBoost Balanceado** apresentou o melhor equilíbrio entre precisão 
 * F1-Score: **42,67%**
 * ROC-AUC: **75,14%**
 
-Embora o XGBoost original tenha obtido maior Accuracy, o modelo balanceado apresentou melhor desempenho na identificação da classe minoritária (funcionários que deixam a empresa), sendo mais adequado para aplicações de People Analytics.
+---
+
+# Principais Variáveis
+
+A análise de importância das variáveis e os gráficos SHAP indicaram que os fatores com maior influência na previsão de turnover foram:
+
+* Horas extras (OverTime)
+* Remuneração mensal
+* Stock Option Level
+* Idade
+* Distância entre residência e empresa
+* Número de empresas anteriores
+* Satisfação no ambiente de trabalho
+* Frequência de viagens
+
+Além de identificar as variáveis mais importantes, a utilização do SHAP permitiu interpretar individualmente as previsões realizadas pelo modelo.
 
 ---
 
-## Principais Fatores de Turnover
+# Resultado Final
 
-A análise SHAP identificou como principais fatores associados ao risco de desligamento:
+Como entrega prática do projeto, foi desenvolvido um relatório contendo o ranking de risco dos funcionários pertencentes ao conjunto de teste.
 
-* Realização de horas extras;
-* Baixa remuneração mensal;
-* Ausência de Stock Options;
-* Menor idade;
-* Maior distância entre residência e empresa;
-* Histórico de trabalho em diversas empresas;
-* Baixa satisfação com o trabalho;
-* Viagens frequentes.
+O arquivo apresenta:
+
+* Probabilidade prevista de desligamento;
+* Classificação do risco em níveis Alto, Médio e Baixo.
+
+Essa abordagem demonstra como modelos de Machine Learning podem ser utilizados para apoiar análises de People Analytics e auxiliar na identificação preventiva de colaboradores com maior probabilidade de turnover.
 
 ---
 
-## Recomendações
+# Tecnologias Utilizadas
 
-Com base nos resultados obtidos, recomenda-se que o setor de Recursos Humanos:
-
-* Monitore colaboradores que realizam horas extras com frequência;
-* Desenvolva estratégias específicas de retenção para cargos comerciais;
-* Reavalie políticas de remuneração e benefícios para funcionários com maior risco;
-* Promova ações voltadas ao aumento da satisfação e do equilíbrio entre vida profissional e pessoal;
-* Utilize o modelo desenvolvido como ferramenta de apoio para identificação preventiva de funcionários com maior probabilidade de desligamento.
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Scikit-Learn
+* XGBoost
+* SHAP
+* Jupyter Notebook
 
 ---
 
-## Conclusão
+# Considerações Finais
 
-O projeto demonstrou que técnicas de Machine Learning podem ser utilizadas com sucesso para prever o turnover de funcionários e identificar os fatores que mais influenciam essa decisão.
+Este projeto permitiu aplicar na prática todo o fluxo de um projeto de Machine Learning, desde a exploração dos dados até a interpretação dos resultados.
 
-Além de alcançar um bom desempenho preditivo, a utilização da técnica SHAP permitiu interpretar as decisões do modelo, tornando os resultados transparentes e úteis para apoiar estratégias de retenção de talentos.
+Além da construção dos modelos preditivos, foi dada atenção à explicabilidade das decisões do algoritmo e à apresentação dos resultados em formatos úteis para análise, como gráficos, relatórios e planilhas.
 
-Este projeto apresenta uma solução completa de People Analytics, contemplando análise exploratória, preparação dos dados, modelagem preditiva, explicabilidade e geração de informações voltadas à tomada de decisão.
+O projeto foi desenvolvido com foco em organização, reprodutibilidade e boas práticas, servindo como demonstração das etapas fundamentais de um pipeline de Ciência de Dados voltado para problemas de classificação.
