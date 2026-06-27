@@ -156,6 +156,30 @@ Performance:
 
 ---
 
+## Installation
+
+Clone this repository:
+
+```bash
+git clone https://github.com/tatsuyadesire/employee-turnover-prediction.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd employee-turnover-prediction
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Open the notebooks or run the Python scripts to reproduce the analysis.
+
+---
+
 ## Author
 
 **TatsuyaDesire**
