@@ -72,8 +72,7 @@ turnover_prediction/
 │
 ├── outputs/
 │
-├── README.md
-└── .gitignore
+└── README.md
 ```
 
 ---
